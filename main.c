@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <signal.h>
 
 void printBits(char c) {
     int i = 7;
@@ -14,8 +15,5 @@ void printBits(char c) {
 }
 
 int main() {
-    char character = 'c';
-    printf("Bit representation of '%c': ", character);
-    printBits(character);
-    return 0;
+    kill(69969, SIGUSR1);
 }
