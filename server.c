@@ -1,8 +1,5 @@
-#include <signal.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include "./include/minitalk.h"
+#include "./include/ft_printf.h"
 
 
 void sig_handler(int sig)
