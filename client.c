@@ -6,7 +6,7 @@
 /*   By: dedsec <dedsec@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:46:46 by kael-ala          #+#    #+#             */
-/*   Updated: 2024/02/27 01:14:08 by dedsec           ###   ########.fr       */
+/*   Updated: 2024/02/28 14:01:01 by dedsec           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 void send_sig(pid_t pid, char *str)
 {
+    // (void)pid;
     int i;
     
     while (*str)
-    {        
+    {
         i = 0;
         while (i <= 7)
         {

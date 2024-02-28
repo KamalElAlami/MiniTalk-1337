@@ -6,7 +6,7 @@
 #    By: dedsec <dedsec@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 01:03:20 by dedsec            #+#    #+#              #
-#    Updated: 2024/02/27 01:19:46 by dedsec           ###   ########.fr        #
+#    Updated: 2024/02/27 14:20:09 by dedsec           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,6 @@ OBJ = $(FILES:.c=.o)
 COBJ = $(CFILES:.c=.o)
 SOBJ = $(SFILES:.c=.o)
 
-AR = ar -rc
-
 all : $(CNAME) $(SNAME)
 
 $(CNAME) : $(OBJ) $(COBJ)
@@ -48,4 +46,3 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : clean 

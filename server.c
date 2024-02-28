@@ -1,17 +1,13 @@
 #include "./include/minitalk.h"
 #include "./include/ft_printf.h"
 
-
 void sig_handler(int sig)
 {
 	static int sigg;
 	static int i = 0;
 
 	if (sig == SIGUSR1)
-	{
 		sigg |= (1 << i);
-	}
-
 	i++;
 	if (i == 8)
 	{
@@ -22,10 +18,18 @@ void sig_handler(int sig)
 }
 int main(void)
 {
-	// pid_t ppiidd;
-	// ppiidd = getpid();
+	char *tag;
 
-	printf("siko : %d\n", getpid());
+	tag = malloc(366 * sizeof(char));
+	tag = 
+"███╗   ███╗██╗███╗   ██╗██╗████████╗ █████╗ ██╗     ██╗  ██╗\n"
+"████╗ ████║██║████╗  ██║██║╚══██╔══╝██╔══██╗██║     ██║ ██╔╝\n"
+"██╔████╔██║██║██╔██╗ ██║██║   ██║   ███████║██║     █████╔╝\n"
+"██║╚██╔╝██║██║██║╚██╗██║██║   ██║   ██╔══██║██║     ██╔═██╗\n"
+"██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗\n"
+"╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n";
+
+	printf("%s \n PID : %d\n", tag ,getpid());
 
 	while (1)
 	{
