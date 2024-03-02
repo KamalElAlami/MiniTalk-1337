@@ -8,9 +8,4 @@
 #include <stdlib.h>
 #include <sys/types.h>
 
-void sig_handler(int sig);
-void send_sig(pid_t pid, char *str);
-
-
-
 #endif
