@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dedsec <dedsec@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kael-ala <kael-ala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:46:46 by kael-ala          #+#    #+#             */
-/*   Updated: 2024/03/02 18:22:56 by dedsec           ###   ########.fr       */
+/*   Updated: 2024/03/02 23:38:40 by kael-ala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int main(int ac, char **av)
     }
     else
         ft_printf("Opps, Something went wrong\n");
+    // puts("HELLO");
     
 }

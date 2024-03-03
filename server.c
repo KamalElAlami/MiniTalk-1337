@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kael-ala <kael-ala@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/02 23:54:46 by kael-ala          #+#    #+#             */
+/*   Updated: 2024/03/03 03:10:20 by kael-ala         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./include/minitalk.h"
 #include <signal.h>
 #include "./include/ft_printf.h"
@@ -9,9 +21,14 @@ void sig_handler(int sig, siginfo_t *info, void *context)
 	static int i;
 	static int c_pid;
 
-	if (c_pid == 0 || c_pid != info->si_pid) {
+	if (c_pid == 0 || c_pid != info->si_pid) 
+	{
+		if ((sigg << 8) == 1)
+		{
+			write(1, "\b", 1);
+		}
 		c_pid = info->si_pid;
-		sigg &= 0;
+		sigg = 0;
 		i = 0;
 	}
 	if (sig == SIGUSR1)
