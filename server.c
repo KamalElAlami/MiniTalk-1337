@@ -6,21 +6,21 @@
 /*   By: kael-ala <kael-ala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 23:54:46 by kael-ala          #+#    #+#             */
-/*   Updated: 2024/03/03 17:59:41 by kael-ala         ###   ########.fr       */
+/*   Updated: 2024/03/03 20:25:53 by kael-ala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/minitalk_bonus.h"
 #include "./include/ft_printf.h"
 
-void sig_handler(int sig, siginfo_t *info, void *context)
+void	sig_handler(int sig, siginfo_t *info, void *context)
 {
-	(void)context;
-	static int sigg;
-	static int i;
-	static int c_pid;
+	static int	sigg;
+	static int	i;
+	static int	c_pid;
 
-	if (c_pid == 0 || c_pid != info->si_pid) 
+	(void)context;
+	if (c_pid == 0 || c_pid != info->si_pid)
 	{
 		c_pid = info->si_pid;
 		sigg = 0;
@@ -36,29 +36,25 @@ void sig_handler(int sig, siginfo_t *info, void *context)
 		sigg = 0;
 	}
 }
-int main(void)
+
+int	main(void)
 {
-	struct sigaction act;
-	act.sa_sigaction = sig_handler;
+	struct sigaction	act;
+	char				*tag;
+
 	act.sa_flags = SA_SIGINFO;
-
-
-	char *tag;
-	tag = 
-"███╗   ███╗██╗███╗   ██╗██╗████████╗ █████╗ ██╗     ██╗  ██╗\n"
-"████╗ ████║██║████╗  ██║██║╚══██╔══╝██╔══██╗██║     ██║ ██╔╝\n"
-"██╔████╔██║██║██╔██╗ ██║██║   ██║   ███████║██║     █████╔╝\n"
-"██║╚██╔╝██║██║██║╚██╗██║██║   ██║   ██╔══██║██║     ██╔═██╗\n"
-"██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗\n"
-"╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n";
-
-	ft_printf("%s \n PID : %d\n", tag ,getpid());
-
+	act.sa_sigaction = sig_handler;
+	tag = "███╗   ███╗██╗███╗   ██╗██╗████████╗ █████╗ ██╗     ██╗  ██╗\n"
+		"████╗ ████║██║████╗  ██║██║╚══██╔══╝██╔══██╗██║     ██║ ██╔╝\n"
+		"██╔████╔██║██║██╔██╗ ██║██║   ██║   ███████║██║     █████╔╝\n"
+		"██║╚██╔╝██║██║██║╚██╗██║██║   ██║   ██╔══██║██║     ██╔═██╗\n"
+		"██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗\n"
+		"╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝\n";
+	ft_printf("%s \n PID : %d\n", tag, getpid());
 	while (1)
 	{
 		sigaction(SIGUSR1, &act, 0);
 		sigaction(SIGUSR2, &act, 0);
 		pause();
 	}
-
 }

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kael-ala <kael-ala@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/27 01:03:20 by dedsec            #+#    #+#              #
-#    Updated: 2024/03/03 17:00:57 by kael-ala         ###   ########.fr        #
+#    Created: 2024/03/03 18:15:35 by kael-ala          #+#    #+#              #
+#    Updated: 2024/03/03 18:17:09 by kael-ala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,6 @@ SFILES = server.c
 
 CBFILES = client_bonus.c
 SBFILES = server_bonus.c
-
-INCS = ./include/ft_printf.h ./include/minitalk.h ./include/minitalk_bonus.h
 
 OBJ = $(FILES:.c=.o)
 COBJ = $(CFILES:.c=.o)
@@ -53,7 +51,13 @@ $(CBNAME) : $(OBJ) $(CBOBJ)
 $(SBNAME) : $(OBJ) $(SBOBJ)
 	$(CC) $^ -o $@
 
-%.o: %.c $(INCS)
+${CBOBJ} : ./include/minitalk_bonus.h
+${SBOBJ} : ./include/minitalk_bonus.h
+${OBJ} : ./include/ft_printf.h 
+${COBJ} :  ./include/minitalk.h 
+${SOBJ} :./include/minitalk.h
+
+%.o: %.c 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
