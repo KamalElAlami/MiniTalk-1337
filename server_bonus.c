@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kael-ala <kael-ala@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 23:54:46 by kael-ala          #+#    #+#             */
-/*   Updated: 2024/03/03 17:59:41 by kael-ala         ###   ########.fr       */
+/*   Created: 2024/03/03 16:42:41 by kael-ala          #+#    #+#             */
+/*   Updated: 2024/03/03 17:03:36 by kael-ala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/minitalk_bonus.h"
+
+#include "./include/minitalk.h"
 #include "./include/ft_printf.h"
 
 void sig_handler(int sig, siginfo_t *info, void *context)
@@ -28,6 +29,8 @@ void sig_handler(int sig, siginfo_t *info, void *context)
 	}
 	if (sig == SIGUSR1)
 		sigg |= (1 << i);
+	if (sig == SIGHUP && c_pid == info->si_pid)
+		kill(c_pid, SIGUSR1);
 	i++;
 	if (i == 8)
 	{
@@ -58,6 +61,7 @@ int main(void)
 	{
 		sigaction(SIGUSR1, &act, 0);
 		sigaction(SIGUSR2, &act, 0);
+		sigaction(SIGHUP, &act, 0);
 		pause();
 	}
 
